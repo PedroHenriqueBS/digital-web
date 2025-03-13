@@ -13,3 +13,17 @@ body {
   color: #fff;
 }
 
+/* ANIMATION TEXT */
+.hideText {
+  opacity: 0;
+  filter: blur(15px);
+  transform: translateY(250px);
+  transition: all 1s;
+}
+
+.showText {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+  transition: all 1s;
+}

@@ -11,6 +11,9 @@ export default {
       colors: {
         primary: '#ED3163',
       },
+      boxShadow: {
+        glow: "0px 0px 300px 0px rgba(237, 49, 99, 1)",
+      },
     },
   },
   plugins: [],
