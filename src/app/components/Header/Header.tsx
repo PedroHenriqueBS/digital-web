@@ -9,7 +9,7 @@ export default function Header(){
     <header className="relative w-full flex justify-between items-center py-10 px-24">
       <div>
         <Link href={'#'} className="relative z-10">
-          <h1 className="text-4xl font-bold z-20 bg-gradient-to-b from-white to-primary bg-clip-text text-transparent hover:scale-105 duration-300">Bapps</h1>
+          <h1 className="text-4xl font-bold z-20 bg-gradient-to-b from-pink-400 to-primary bg-clip-text text-transparent hover:scale-105 duration-300 uppercase">Bapps</h1>
         </Link>
         <Image src={blur} alt="blur" className="blur-3xl absolute -top-96 -left-56 z-0 opacity-70" width={900}/>
       </div>
