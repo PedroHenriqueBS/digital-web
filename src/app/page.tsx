@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import Header from "./components/Header/Header";
 import Icon from "./components/Svgs/Icons";
 
@@ -63,9 +64,9 @@ export default function Home() {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !hasAnimated) {
-          animateNumber(setNum1, 45, 800);
-          animateNumber(setNum2, 99, 800);
-          animateNumber(setNum3, 97.4, 800);
+          animateNumber(setNum1, 45, 1000);
+          animateNumber(setNum2, 99, 1000);
+          animateNumber(setNum3, 97.4, 1200);
           setHasAnimated(false);
         }
       },
@@ -117,15 +118,15 @@ export default function Home() {
 
       {/* LINE */}
       <section className="flex items-center justify-center relative">
-          <div className="w-full flex justify-center items-center flex-col h-[500px] relative z-20 hideText">
-            <p className="text-6xl font-bold ">Aumente seu público em até </p>
-            <p className="text-6xl font-bold"><span className="text-primary">60%</span> com um site impactante!</p>
+          <div className="w-full flex justify-center items-center flex-col h-[500px] relative z-20">
+            <p className="text-6xl font-bold hideText">Aumente seu público em até </p>
+            <p className="text-6xl font-bold hideText"><span className="text-primary">60%</span> com um site impactante!</p>
           </div>
           <Icon name="line"/>
       </section>
 
-      {/* BOX */}
-      <section className="max-w-5xl m-auto bg-white my-20 rounded-2xl flex text-black p-10 justify-between gap-20">
+      {/* BOX RESULTADOS*/}
+      <section className="max-w-5xl m-auto bg-white my-28 rounded-2xl flex text-black p-10 justify-between gap-20">
         <div>
           <h1 className="text-5xl font-bold w-72 leading-snug">Experiência Digital com <span className="text-primary ">Resultados.</span></h1>
         </div>
@@ -149,7 +150,72 @@ export default function Home() {
       </section>
 
       {/* BOX SOLUÇÕES */}
-      <section className="max-w-5xl m-auto">
+      <section className="max-w-5xl m-auto text-center flex flex-col gap-10 mb-10">
+        <div className="flex justify-center gap-10">
+          <span className="flex gap-2 items-center"><Image src={'/assets/icons/satisfacao.svg'} alt="icon" width={16} height={16}/>98% de satisfação</span>
+          <span className="flex gap-2 items-center"><Image src={'/assets/icons/headphones.svg'} alt="icon" width={16} height={16}/>500+ clientes atendidos</span>
+        </div>
+
+        <h2 className="text-5xl font-bold">
+          Soluções que <span className="text-primary">Elevam</span> suas 
+          <br/>
+          <span className="text-primary">Visitas</span> em <span className="text-primary">Até 62%.</span>
+        </h2>
+  
+        <div className="flex flex-col gap-10 max-w-xl m-auto w-full"> 
+
+          <div className="flex w-full justify-between">
+            <div className="bg-[#131313] py-2 px-3 rounded-lg flex gap-3 items-center justify-center font-semibold cursor-pointer hover:bg-primary duration-300 group">
+              <Image 
+                src={'/assets/icons/shield.svg'} 
+                alt="icon"width={18} height={18} 
+                className="duration-300 group-hover:invert group-hover:brightness-0 group-hover:contrast-100"/> Segurança
+            </div>
+            <div className="bg-[#131313] py-2 px-3 rounded-lg flex gap-3 items-center justify-center font-semibold cursor-pointer hover:bg-primary duration-300 group">
+              <Image 
+                src={'/assets/icons/desempenho.svg'} 
+                alt="icon"width={18} height={18}
+                className="duration-300 group-hover:invert group-hover:brightness-0 group-hover:contrast-100"/> Desempenho rápido
+              </div>
+            <div className="bg-[#131313] py-2 px-3 rounded-lg flex gap-3 items-center justify-center font-semibold cursor-pointer hover:bg-primary duration-300 group">
+              <Image 
+                src={'/assets/icons/manutencao.svg'} 
+                alt="icon"width={18} height={18}
+                className="duration-300 group-hover:invert group-hover:brightness-0 group-hover:contrast-100"/> Manutenção
+              </div>
+          </div> 
+
+          <div className="flex justify-center gap-10">
+            <div className="flex flex-col gap-10">
+              <div className="bg-[#131313] py-2 px-3 rounded-lg flex gap-3 items-center justify-center font-semibold cursor-pointer hover:bg-primary duration-300 group">
+                <Image 
+                  src={'/assets/icons/compatibilidade.svg'} 
+                  alt="icon" width={18} height={18}
+                  className="duration-300 group-hover:invert group-hover:brightness-0 group-hover:contrast-100"/> Compatibilidade
+                </div>
+              <div className="bg-[#131313] py-2 px-3 rounded-lg flex gap-3 items-center justify-center font-semibold cursor-pointer hover:bg-primary duration-300 group">
+                <Image 
+                  src={'/assets/icons/hospedagem.svg'} 
+                  alt="icon" width={18} height={18}
+                  className="duration-300 group-hover:invert group-hover:brightness-0 group-hover:contrast-100"/> Hospedagem gratuita
+                </div>
+            </div>
+            <div className="flex flex-col gap-10">
+              <div className="bg-[#131313] py-2 px-3 rounded-lg flex gap-3 items-center justify-center font-semibold cursor-pointer hover:bg-primary duration-300 group">
+                <Image 
+                  src={'/assets/icons/interface.svg'} 
+                  alt="icon" width={18} height={18}
+                  className="duration-300 group-hover:invert group-hover:brightness-0 group-hover:contrast-100"/> Interface atraente
+                </div>
+              <div className="bg-[#131313] py-2 px-3 rounded-lg flex gap-3 items-center justify-center font-semibold cursor-pointer hover:bg-primary duration-300 group">
+                <Image 
+                  src={'/assets/icons/search.svg'} 
+                  alt="icon" width={18} height={18}
+                  className="duration-300 group-hover:invert group-hover:brightness-0 group-hover:contrast-100"/> Aparecer no Google
+                </div>
+            </div>
+          </div>
+        </div>
 
       </section>
 

@@ -33,7 +33,7 @@ body {
 .hideText {
   opacity: 0;
   filter: blur(15px);
-  transform: translateY(200px);
+  transform: translateY(150px);
   transition: all 1s;
 }
 
