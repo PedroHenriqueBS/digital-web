@@ -4,8 +4,11 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Header from "./components/Header/Header";
 import Icon from "./components/Svgs/Icons";
+import { motion } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 
 export default function Home() {
+  const [isOpen, setIsOpen] = useState(false);
   
   useEffect(() => {
     const elementos = document.querySelectorAll('.hideText, .hideTitle, .hideElemento');
@@ -93,6 +96,47 @@ export default function Home() {
     }, stepTime);
   }
 
+  const boxesData = [
+    {
+      id: 1,
+      title: "Sites",
+      description:
+        "Criamos sites personalizados e responsivos que refletem a identidade da sua marca e oferecem uma experiência excepcional ao usuário.",
+      time: "27 dias",
+      client: "Legasse",
+      visits: "32.6K+",
+    },
+    {
+      id: 2,
+      title: "Sistemas",
+      description:
+        "Desenvolvemos sistemas robustos e escaláveis para otimizar seus processos de negócio e aumentar a eficiência operacional.",
+      time: "34 dias",
+      client: "SpaceLabs",
+      visits: "46.2K+",
+    },
+    {
+      id: 3,
+      title: "Modelos Estáticos",
+      description:
+        "Oferecemos modelos estáticos elegantes e de alto desempenho, perfeitos para apresentar informações de forma clara e eficaz.",
+      time: "16 dias",
+      client: "Renato Amaral",
+      visits: "25.8K+",
+    },
+    {
+      id: 4,
+      title: "Modelos Interativos",
+      description:
+        "Nossos modelos interativos proporcionam uma experiência envolvente e dinâmica, permitindo que seus usuários interajam de forma intuitiva com seu conteúdo.",
+      time: "22 dias",
+      client: "Greenleaf",
+      visits: "38.9K+",
+    },
+  ];
+
+  const [openBox, setOpenBox] = useState<number | null>(null);
+
   return (
     <main>
       <Header />
@@ -150,19 +194,19 @@ export default function Home() {
       </section>
 
       {/* BOX SOLUÇÕES */}
-      <section className="max-w-5xl m-auto text-center flex flex-col gap-10 mb-10">
-        <div className="flex justify-center gap-10">
+      <section className="max-w-5xl m-auto text-center flex flex-col mb-44">
+        <div className="flex justify-center gap-10 text-[#CCC] text-sm font-medium">
           <span className="flex gap-2 items-center"><Image src={'/assets/icons/satisfacao.svg'} alt="icon" width={16} height={16}/>98% de satisfação</span>
           <span className="flex gap-2 items-center"><Image src={'/assets/icons/headphones.svg'} alt="icon" width={16} height={16}/>500+ clientes atendidos</span>
         </div>
 
-        <h2 className="text-5xl font-bold">
+        <h2 className="text-5xl font-bold mt-5 mb-14">
           Soluções que <span className="text-primary">Elevam</span> suas 
           <br/>
           <span className="text-primary">Visitas</span> em <span className="text-primary">Até 62%.</span>
         </h2>
   
-        <div className="flex flex-col gap-10 max-w-xl m-auto w-full"> 
+        <div className="flex flex-col gap-16 max-w-xl m-auto w-full"> 
 
           <div className="flex w-full justify-between">
             <div className="bg-[#131313] py-2 px-3 rounded-lg flex gap-3 items-center justify-center font-semibold cursor-pointer hover:bg-primary duration-300 group">
@@ -185,8 +229,8 @@ export default function Home() {
               </div>
           </div> 
 
-          <div className="flex justify-center gap-10">
-            <div className="flex flex-col gap-10">
+          <div className="flex justify-center gap-16">
+            <div className="flex flex-col gap-16">
               <div className="bg-[#131313] py-2 px-3 rounded-lg flex gap-3 items-center justify-center font-semibold cursor-pointer hover:bg-primary duration-300 group">
                 <Image 
                   src={'/assets/icons/compatibilidade.svg'} 
@@ -200,7 +244,7 @@ export default function Home() {
                   className="duration-300 group-hover:invert group-hover:brightness-0 group-hover:contrast-100"/> Hospedagem gratuita
                 </div>
             </div>
-            <div className="flex flex-col gap-10">
+            <div className="flex flex-col gap-16">
               <div className="bg-[#131313] py-2 px-3 rounded-lg flex gap-3 items-center justify-center font-semibold cursor-pointer hover:bg-primary duration-300 group">
                 <Image 
                   src={'/assets/icons/interface.svg'} 
@@ -217,6 +261,75 @@ export default function Home() {
           </div>
         </div>
 
+      </section>
+
+      {/* QUESTIONS */}
+      <section className="max-w-5xl m-auto">
+        <div className="flex justify-center gap-3 items-center w-full">
+          <Image src={'/assets/icons/smile.svg'} alt="icon" width={18} height={18}/>
+          <span className="text-[#CCC] text-sm font-medium">4.9 avaliação em média</span>
+        </div>
+        <h2 className="text-5xl text-center font-bold my-5 leading-normal"> Estratégia, Design <span className="text-primary">&</span> Performance. </h2>
+        <p className="text-center max-w-2xl m-auto text-[#ccc] font-medium">Nossos serviços impulsionam seu negócio. Clientes relatam um aumento médio de <span className="text-primary">300% nas taxas de conversão</span> após implementar nossas soluções personalizadas</p>
+
+      {/* BOX QUESTIONS */}
+        <div className="w-full p-4 max-w-3xl mx-auto mt-10">
+          <div className="grid gap-4">
+            {boxesData.map((box, index) => (
+              <div
+                key={box.id}
+                className="bg-[#111111] text-white p-4 rounded-lg cursor-pointer select-none"
+              >
+                <div
+                  className="flex justify-between w-full"
+                  onClick={() => setOpenBox(openBox === index ? null : index)}
+                >
+                  <div className="flex items-center justify-center">
+                    <span className="w-8 h-8 sm:w-12 sm:h-12 rounded-full inline-flex items-center justify-center mr-3 sm:mr-6 bg-[#080808] border border-[#242424]">
+                      <span className="text-lg font-bold text-primary">{index + 1}</span>
+                    </span>
+                    <h2 className="text-4xl font-bold">{box.title}</h2>
+                  </div>
+                  <motion.button
+                    animate={{ rotate: openBox === index ? 0 : -90 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    className="bg-[#242424] text-primary p-3 rounded-lg"
+                  >
+                    <ChevronDown size={32} />
+                  </motion.button>
+                </div>
+
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: openBox === index ? "auto" : 0, opacity: openBox === index ? 1 : 0 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                  className="overflow-hidden w-11/12"
+                >
+                  <div className="my-5 rounded-lg ">
+                    <p className="text-sm font-medium text-[#ccc]">{box.description}</p>
+                    <div className="flex gap-16 justify-between mt-5">
+                      <div className="bg-blue-300 w-full rounded-lg flex items-center justify-center"> Image project </div>
+                      <div className="flex flex-col px-5 gap-20">
+                        <div className="flex flex-col">
+                          <span className="font-semibold">{box.time}</span>
+                          <span className="text-sm font-medium text-[#ccc]">Tempo</span>
+                        </div>
+                        <div className="flex flex-col">
+                          <span className="font-semibold">{box.client}</span>
+                          <span className="text-sm font-medium text-[#ccc]">Cliente</span>
+                        </div>
+                        <div className="flex flex-col">
+                          <span className="font-semibold">{box.visits}</span>
+                          <span className="text-sm font-medium text-[#ccc]">Visitas</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
     </main>
