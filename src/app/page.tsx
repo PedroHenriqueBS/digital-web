@@ -8,7 +8,6 @@ import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 
 export default function Home() {
-  const [isOpen, setIsOpen] = useState(false);
   
   useEffect(() => {
     const elementos = document.querySelectorAll('.hideText, .hideTitle, .hideElemento');
@@ -273,27 +272,27 @@ export default function Home() {
         <p className="text-center max-w-2xl m-auto text-[#ccc] font-medium">Nossos serviços impulsionam seu negócio. Clientes relatam um aumento médio de <span className="text-primary">300% nas taxas de conversão</span> após implementar nossas soluções personalizadas</p>
 
       {/* BOX QUESTIONS */}
-        <div className="w-full p-4 max-w-3xl mx-auto mt-10">
+        <div className="w-full p-4 max-w-4xl mx-auto mt-10">
           <div className="grid gap-4">
             {boxesData.map((box, index) => (
               <div
                 key={box.id}
-                className="bg-[#111111] text-white p-4 rounded-lg cursor-pointer select-none"
+                className="bg-[#111111] text-white p-4 rounded-lg cursor-pointer select-none hover:bg-[#d0476c] duration-500 group"
               >
                 <div
                   className="flex justify-between w-full"
                   onClick={() => setOpenBox(openBox === index ? null : index)}
                 >
                   <div className="flex items-center justify-center">
-                    <span className="w-8 h-8 sm:w-12 sm:h-12 rounded-full inline-flex items-center justify-center mr-3 sm:mr-6 bg-[#080808] border border-[#242424]">
-                      <span className="text-lg font-bold text-primary">{index + 1}</span>
+                    <span className="w-8 h-8 sm:w-12 sm:h-12 rounded-full inline-flex items-center justify-center mr-3 sm:mr-6 bg-[#080808] border border-[#242424] group-hover:bg-[#d66986] duration-500 group-hover:border-[#f9b4c6]">
+                      <span className="text-lg font-bold text-primary group-hover:text-white duration-500">{index + 1}</span>
                     </span>
                     <h2 className="text-4xl font-bold">{box.title}</h2>
                   </div>
                   <motion.button
                     animate={{ rotate: openBox === index ? 0 : -90 }}
                     transition={{ duration: 0.3, ease: "easeInOut" }}
-                    className="bg-[#242424] text-primary p-3 rounded-lg"
+                    className="bg-[#242424] text-primary p-3 rounded-lg group-hover:bg-[#d66986] group-hover:text-white duration-500"
                   >
                     <ChevronDown size={32} />
                   </motion.button>
@@ -309,16 +308,19 @@ export default function Home() {
                     <p className="text-sm font-medium text-[#ccc]">{box.description}</p>
                     <div className="flex gap-16 justify-between mt-5">
                       <div className="bg-blue-300 w-full rounded-lg flex items-center justify-center"> Image project </div>
-                      <div className="flex flex-col px-5 gap-20">
-                        <div className="flex flex-col">
+                      <div className="flex flex-col px-5 gap-14">
+                        <div className="flex flex-col justify-center items-center gap-1">
+                          <Image src={'assets/icons/clock.svg'} alt="tempo" width={20} height={20}/>
                           <span className="font-semibold">{box.time}</span>
                           <span className="text-sm font-medium text-[#ccc]">Tempo</span>
                         </div>
-                        <div className="flex flex-col">
+                        <div className="flex flex-col justify-center items-center gap-1">
+                         <Image src={'assets/icons/person.svg'} alt="tempo" width={20} height={20}/>
                           <span className="font-semibold">{box.client}</span>
                           <span className="text-sm font-medium text-[#ccc]">Cliente</span>
                         </div>
-                        <div className="flex flex-col">
+                        <div className="flex flex-col justify-center items-center gap-1">
+                          <Image src={'assets/icons/eye.svg'} alt="tempo" width={20} height={20}/>
                           <span className="font-semibold">{box.visits}</span>
                           <span className="text-sm font-medium text-[#ccc]">Visitas</span>
                         </div>
