@@ -41,12 +41,7 @@ export default function Home() {
             }, delay);
           }
         } else {
-          if (classToShow) {
-            target.classList.remove(classToShow);
-          } else {
-            target.style.opacity = "0";
-            target.style.transform = "translateX(100px)";
-          }
+          if (!entry.isIntersecting) return 
         }
       });
     });
@@ -66,9 +61,9 @@ export default function Home() {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !hasAnimated) {
-          animateNumber(setNum1, 45, 1000);
-          animateNumber(setNum2, 99, 1000);
-          animateNumber(setNum3, 97.4, 1200);
+          animateNumber(setNum1, 45, 200);
+          animateNumber(setNum2, 99, 200);
+          animateNumber(setNum3, 97.4, 200);
           setHasAnimated(false);
         }
       },
@@ -143,7 +138,7 @@ export default function Home() {
       {/* TITLE */}
       <section className="w-full m-auto mt-24 mb-80">
         <div className="relative flex max-w-5xl m-auto z-40 flex-col">
-          <h1 className="text-8xl font-bold relative">
+          <h1 className="text-8xl font-bold relative hideText">
             Explore o <span className="text-primary block">Digital.</span>
           </h1>
 
@@ -169,7 +164,7 @@ export default function Home() {
       </section>
 
       {/* BOX RESULTADOS*/}
-      <section className="max-w-5xl m-auto bg-white my-28 rounded-2xl flex text-black p-10 justify-between gap-20">
+      <section className="max-w-5xl m-auto bg-white mt-28 mb-52 rounded-2xl flex text-black p-10 justify-between gap-20 hideText">
         <div>
           <h1 className="text-5xl font-bold w-72 leading-snug">Experiência Digital com <span className="text-primary ">Resultados.</span></h1>
         </div>
@@ -193,7 +188,7 @@ export default function Home() {
       </section>
 
       {/* BOX SOLUÇÕES */}
-      <section className="max-w-5xl m-auto text-center flex flex-col mb-44">
+      <section className="max-w-5xl m-auto text-center flex flex-col mb-44 hideText">
         <div className="flex justify-center gap-10 text-[#CCC] text-sm font-medium">
           <span className="flex gap-2 items-center"><Image src={'/assets/icons/satisfacao.svg'} alt="icon" width={16} height={16}/>98% de satisfação</span>
           <span className="flex gap-2 items-center"><Image src={'/assets/icons/headphones.svg'} alt="icon" width={16} height={16}/>500+ clientes atendidos</span>
@@ -263,7 +258,7 @@ export default function Home() {
       </section>
 
       {/* QUESTIONS */}
-      <section className="max-w-5xl m-auto">
+      <section className="max-w-5xl m-auto hideText">
         <div className="flex justify-center gap-3 items-center w-full">
           <Image src={'/assets/icons/smile.svg'} alt="icon" width={18} height={18}/>
           <span className="text-[#CCC] text-sm font-medium">4.9 avaliação em média</span>
